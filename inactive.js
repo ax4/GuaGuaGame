@@ -30,10 +30,13 @@ function CheckIdleTime() {
   }
 }
 
-var UpgradeInterval = window.setInterval(Upgrade, UpgradeInterval*1000);
+var UpgradeInterval = window.setInterval(Upgrade, 5000);
 
 function Upgrade(){
   _idleMilliSecondsCounter = 0;
   IDLE_TIMEOUT = IDLE_TIMEOUT/2;
+
+  window.clearInterval(UpgradeInterval);
+  UpgradeInterval = window.setInterval(Upgrade, 5000);
 }
 
