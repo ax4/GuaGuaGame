@@ -23,9 +23,6 @@ function CheckIdleTime() {
     alert("Time expired!");
     window.clearInterval(myInterval);
     oPanel.innerHTML = ("Job Done");
-    
-    _idleMilliSecondsCounter = 0;
-    myInterval = window.setInterval(CheckIdleTime, 1000);
   }
 }
 
