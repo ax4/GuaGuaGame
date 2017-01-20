@@ -1,16 +1,19 @@
 var IDLE_TIMEOUT = 10; //seconds
 var _idleMilliSecondsCounter = 0; //milliseconds
 var _MilliSecondsInterval = 10; //milliseconds
-var UpgradeSecondsInterval = 5; //seconds
+//var UpgradeSecondsInterval = 5; //seconds
 
 document.onclick = function() {
   _idleMilliSecondsCounter = 0;
+  console.log("Click");
 };
 document.onmousemove = function() {
   _idleMilliSecondsCounter = 0;
+  console.log("Move");
 };
 document.onkeypress = function() {
   _idleMilliSecondsCounter = 0;
+  console.log("KeyPress")
 };
 
 var myInterval = window.setInterval(CheckIdleTime, _MilliSecondsInterval);
