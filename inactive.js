@@ -30,6 +30,7 @@ function CheckIdleTime() {
   if (_idleMilliSecondsCounter >= IDLE_TIMEOUT * 1000) {
     alert("你死了！");
     window.clearInterval(myInterval);
+    window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
   }
 }
