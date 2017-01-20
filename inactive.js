@@ -1,6 +1,7 @@
 var IDLE_TIMEOUT = 10; //seconds
-var _idleMilliSecondsCounter = 0; //in XXX ms
-
+var _idleMilliSecondsCounter = 0; //milliseconds
+var _MilliSecondsInterval = 10; //milliseconds
+var UpgradeSecondsInterval = 5; //seconds
 
 document.onclick = function() {
   _idleMilliSecondsCounter = 0;
@@ -24,5 +25,12 @@ function CheckIdleTime() {
     window.clearInterval(myInterval);
     oPanel.innerHTML = ("Job Done");
   }
+}
+
+var UpgradeInterval = window.setInterval(Upgrade, UpgradeInterval*1000);
+
+function Upgrade(){
+  _idleMilliSecondsCounter = 0;
+  IDLE_TIMEOUT = IDLE_TIMEOUT/2;
 }
 
