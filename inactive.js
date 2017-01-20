@@ -24,9 +24,9 @@ function CheckIdleTime() {
   if (oPanel)
     oPanel.innerHTML = (IDLE_TIMEOUT*1000 - _idleMilliSecondsCounter)/1000;
   if (_idleMilliSecondsCounter >= IDLE_TIMEOUT*1000) {
-    alert("Time expired!");
+    alert("你死了！");
     window.clearInterval(myInterval);
-    oPanel.innerHTML = ("Job Done");
+    oPanel.innerHTML = ("祝你鸡年大吉吧！");
   }
 }
 
@@ -40,3 +40,10 @@ function Upgrade(){
   UpgradeInterval = window.setInterval(Upgrade, 5000);
 }
 
+function DisableMouse(){
+
+}
+
+function DisableKey(){
+
+}
