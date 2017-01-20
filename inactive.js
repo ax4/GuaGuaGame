@@ -9,18 +9,25 @@ document.onclick = function () {
   console.log("Click");
   click++;
 };
+/* 
 document.onmousemove = function () { //建议禁用！太过于作弊了！
   _idleMilliSecondsCounter = 0;
   console.log("Move");
   click++;
-};
+};*/
 document.onkeypress = function () {
   _idleMilliSecondsCounter = 0;
   console.log("KeyPress");
   click++;
 };
 
-var myInterval = window.setInterval(CheckIdleTime, _MilliSecondsInterval);
+var myInterval = null;//window.setInterval(CheckIdleTime, _MilliSecondsInterval);
+var UpgradeInterval = null;//window.setInterval(Upgrade, 5000);
+
+function start() {
+  myInterval = window.setInterval(CheckIdleTime, _MilliSecondsInterval);
+  UpgradeInterval = window.setInterval(Upgrade, 5000);
+}
 
 function CheckIdleTime() {
   _idleMilliSecondsCounter += _MilliSecondsInterval;
@@ -28,14 +35,15 @@ function CheckIdleTime() {
   if (oPanel)
     oPanel.innerHTML = (IDLE_TIMEOUT * 1000 - _idleMilliSecondsCounter) / 1000;
   if (_idleMilliSecondsCounter >= IDLE_TIMEOUT * 1000) {
+
+    /* 死的逻辑 */
+    //var oPanel = document.getElementById("SecondsUntilExpire");
     alert("GameOver! 去吃粘液饭！");
     window.clearInterval(myInterval);
     window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
   }
 }
-
-var UpgradeInterval = window.setInterval(Upgrade, 5000);
 
 function Upgrade() {
   var oPanel = document.getElementById("SecondsUntilExpire");
@@ -67,6 +75,7 @@ function DisableMouse() {
   window.setTimeout(RestoreMouse, time)
 
   function RestoreMouse() {
+    warn.innerHTML = "注意警告"
     document.onclick = function () {
       _idleMilliSecondsCounter = 0;
       console.log("Click");
@@ -77,4 +86,71 @@ function DisableMouse() {
 
 function DisableKey() {
   var warn = document.getElementById("BanWarn");
+  warn.innerHTML = "禁用键盘！"
+  var time = IDLE_TIMEOUT * 0.8 * 1000;
+  document.onkeypress = function () {
+    warn.innerHTML += "！";
+    click++;
+  };
+
+  window.setTimeout(RestoreKey, time)
+
+  function RestoreKey() {
+    warn.innerHTML = "注意警告"
+    document.onkeypress = function () {
+      _idleMilliSecondsCounter = 0;
+      console.log("KeyPress");
+      click++;
+    };
+  }
+}
+
+function DeadMouse() {
+  var warn = document.getElementById("DeadWarn");
+  warn.innerHTML = "碰鼠标就死！"
+  var time = IDLE_TIMEOUT * 0.8 * 1000;
+  document.onclick = function () {
+    /* 死的逻辑 */
+    var oPanel = document.getElementById("SecondsUntilExpire");
+    alert("叫！你！别！碰！鼠标！GameOver! ");
+    window.clearInterval(myInterval);
+    window.clearInterval(UpgradeInterval);
+    oPanel.innerHTML = ("祝你鸡年大吉吧！");
+  };
+
+  window.setTimeout(RestoreMouse, time)
+
+  function RestoreMouse() {
+    warn.innerHTML = "注意警告"
+    document.onclick = function () {
+      _idleMilliSecondsCounter = 0;
+      console.log("Click");
+      click++;
+    };
+  }
+}
+
+function DeadKey() {
+  var warn = document.getElementById("DeadWarn");
+  warn.innerHTML = "碰键盘就死！"
+  var time = IDLE_TIMEOUT * 0.8 * 1000;
+  document.onkeypress = function () {
+    /* 死的逻辑 */
+    var oPanel = document.getElementById("SecondsUntilExpire");
+    alert("叫！你！别！碰！键盘！GameOver! ");
+    window.clearInterval(myInterval);
+    window.clearInterval(UpgradeInterval);
+    oPanel.innerHTML = ("祝你鸡年大吉吧！");
+  };
+
+  window.setTimeout(RestoreKey, time)
+
+  function RestoreKey() {
+    warn.innerHTML = "注意警告"
+    document.onkeypress = function () {
+      _idleMilliSecondsCounter = 0;
+      console.log("KeyPress");
+      click++;
+    };
+  }
 }
