@@ -28,7 +28,7 @@ function CheckIdleTime() {
   if (oPanel)
     oPanel.innerHTML = (IDLE_TIMEOUT * 1000 - _idleMilliSecondsCounter) / 1000;
   if (_idleMilliSecondsCounter >= IDLE_TIMEOUT * 1000) {
-    alert("你死了！");
+    alert("GameOver! 去吃粘液饭！");
     window.clearInterval(myInterval);
     window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
@@ -40,7 +40,7 @@ var UpgradeInterval = window.setInterval(Upgrade, 5000);
 function Upgrade() {
   var oPanel = document.getElementById("SecondsUntilExpire");
   if (click <= 0) {
-    alert("你偷懒，懒死了！");
+    alert("一股神秘的力量，把你拽去吃年夜饭！");
     window.clearInterval(myInterval);
     window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
