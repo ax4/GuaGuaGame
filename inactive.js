@@ -37,10 +37,13 @@ function CheckIdleTime() {
 var UpgradeInterval = window.setInterval(Upgrade, 5000);
 
 function Upgrade() {
+  var oPanel = document.getElementById("SecondsUntilExpire");
   if (click <= 0) {
     alert("你偷懒，懒死了！");
     window.clearInterval(myInterval);
+    window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
+    return; 
   }
 
   click = 0;
