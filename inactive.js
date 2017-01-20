@@ -15,7 +15,7 @@ document.onkeypress = function() {
 var myInterval = window.setInterval(CheckIdleTime, 1000);
 
 function CheckIdleTime() {
-  _idleMilliSecondsCounter++;
+  _idleMilliSecondsCounter+= 1000;
   var oPanel = document.getElementById("SecondsUntilExpire");
   if (oPanel)
     oPanel.innerHTML = Math.round((IDLE_TIMEOUT*1000 - _idleMilliSecondsCounter)/1000) + "";
