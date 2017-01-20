@@ -12,10 +12,10 @@ document.onkeypress = function() {
   _idleMilliSecondsCounter = 0;
 };
 
-var myInterval = window.setInterval(CheckIdleTime, 1000);
+var myInterval = window.setInterval(CheckIdleTime, _MilliSecondsInterval);
 
 function CheckIdleTime() {
-  _idleMilliSecondsCounter+= 1000;
+  _idleMilliSecondsCounter+= _MilliSecondsInterval;
   var oPanel = document.getElementById("SecondsUntilExpire");
   if (oPanel)
     oPanel.innerHTML = Math.round((IDLE_TIMEOUT*1000 - _idleMilliSecondsCounter)/1000) + "";
