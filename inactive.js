@@ -7,7 +7,7 @@ document.onclick = function() {
   _idleMilliSecondsCounter = 0;
   console.log("Click");
 };
-document.onmousemove = function() {
+document.onmousemove = function() { //建议禁用！太过于作弊了！
   _idleMilliSecondsCounter = 0;
   console.log("Move");
 };
