@@ -44,7 +44,7 @@ function Upgrade() {
     window.clearInterval(myInterval);
     window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
-    return; 
+    return;
   }
 
   click = 0;
@@ -56,9 +56,25 @@ function Upgrade() {
 }
 
 function DisableMouse() {
+  var warn = document.getElementById("BanWarn");
+  warn.innerHTML = "禁用鼠标！"
+  var time = IDLE_TIMEOUT * 0.8 * 1000;
+  document.onclick = function () {
+    warn.innerHTML += "！";
+    click++;
+  };
 
+  window.setTimeout(RestoreMouse, time)
+
+  function RestoreMouse() {
+    document.onclick = function () {
+      _idleMilliSecondsCounter = 0;
+      console.log("Click");
+      click++;
+    };
+  }
 }
 
 function DisableKey() {
-
+  var warn = document.getElementById("BanWarn");
 }
