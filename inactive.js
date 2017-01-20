@@ -51,7 +51,7 @@ function Upgrade() {
   IDLE_TIMEOUT = IDLE_TIMEOUT * 0.8; // soft 
 
   window.clearInterval(UpgradeInterval);
-  UpgradeInterval = window.setInterval(Upgrade, 7000);
+  UpgradeInterval = window.setInterval(Upgrade, 9000);
 }
 
 function DisableMouse() {
