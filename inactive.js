@@ -34,7 +34,7 @@ var UpgradeInterval = window.setInterval(Upgrade, 5000);
 
 function Upgrade(){
   _idleMilliSecondsCounter = 0;
-  IDLE_TIMEOUT = IDLE_TIMEOUT/2;
+  IDLE_TIMEOUT = IDLE_TIMEOUT * 0.8; // soft 
 
   window.clearInterval(UpgradeInterval);
   UpgradeInterval = window.setInterval(Upgrade, 5000);
