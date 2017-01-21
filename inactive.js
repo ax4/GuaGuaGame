@@ -30,7 +30,10 @@ var myInterval = null;//window.setInterval(CheckIdleTime, _MilliSecondsInterval)
 //var UpgradeInterval = null;//window.setInterval(Upgrade, 5000);
 
 function start() {
-  IDLE_TIMEOUT = 10;
+  IDLE_TIMEOUT = 10; //seconds
+  _idleMilliSecondsCounter = 0; //milliseconds
+  _lifeLongCounter = 0; //milliseconds
+  _lifeLongCounterDelta = 0; //milliseconds
   click = 0; 
   myInterval = window.setInterval(CheckIdleTime, _MilliSecondsInterval);
   //UpgradeInterval = window.setInterval(Upgrade, 11000);
