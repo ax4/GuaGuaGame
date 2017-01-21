@@ -45,7 +45,7 @@ function CheckIdleTime() {
   var oPanel = document.getElementById("SecondsUntilExpire");
   if (oPanel)
     oPanel.innerHTML = (IDLE_TIMEOUT * 1000 - _idleMilliSecondsCounter) / 1000;
-
+    oPanel.innerHTML += "秒内，点击/敲键 续命"
   if (click>=3){
     Upgrade();
   }  
