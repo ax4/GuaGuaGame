@@ -6,14 +6,18 @@
 </head>
 
 <body>
-    <h1 id="SecondsUntilExpire"></h1>
-    <h1 id="LifeLong"> 真正的粉丝，为他续命 </h1>
-    <h1 id="BanWarn" style="color:coral;font-size: bold;">注意警告</h1>
-    <h1 id="DeadWarn" style="color:fuchsia;font-size: bold;">注意警告</h1>
+    <div>
+        <h1 id="SecondsUntilExpire"></h1>
+        <h1 id="LifeLong"> 真正的粉丝，为他续命 </h1>
+        <h1 id="BanWarn" style="color:coral;font-size: bold;">注意警告</h1>
+        <h1 id="DeadWarn" style="color:fuchsia;font-size: bold;">注意警告</h1>
+    </div>
+
+    <div id="getName-div" style="text-align:center;margin-top:150px;">
+        <input id="name" type="" style="width:250px;height:35px;" name="" placeholder='请输入你的膜蛤昵称'>
+        <button id="login" onclick="login();start();" style="height:35px;border: 1px solid;border-radius: 3px;cursor:pointer">进入游戏</button>
+    </div>
 
     <!--todo: add Wilddog login. Once Dead, push score. (to prevent Cheating) -->
     <script src="inactive.js"></script>
-    <script>
-        start();
-    </script>
 </body>
