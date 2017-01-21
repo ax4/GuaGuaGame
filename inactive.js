@@ -22,11 +22,22 @@ document.onkeypress = function () {
 };
 
 var myInterval = null;//window.setInterval(CheckIdleTime, _MilliSecondsInterval);
-var UpgradeInterval = null;//window.setInterval(Upgrade, 5000);
+//var UpgradeInterval = null;//window.setInterval(Upgrade, 5000);
 
 function start() {
+  IDLE_TIMEOUT = 10;
+  click = 0; 
   myInterval = window.setInterval(CheckIdleTime, _MilliSecondsInterval);
-  UpgradeInterval = window.setInterval(Upgrade, 5000);
+  //UpgradeInterval = window.setInterval(Upgrade, 11000);
+}
+
+function dead(info){
+  /* 死的逻辑 */
+    var oPanel = document.getElementById("SecondsUntilExpire");
+    alert(info);
+    window.clearInterval(myInterval);
+    //window.clearInterval(UpgradeInterval);
+    oPanel.innerHTML = ("祝你鸡年大吉吧！");
 }
 
 function CheckIdleTime() {
@@ -34,33 +45,40 @@ function CheckIdleTime() {
   var oPanel = document.getElementById("SecondsUntilExpire");
   if (oPanel)
     oPanel.innerHTML = (IDLE_TIMEOUT * 1000 - _idleMilliSecondsCounter) / 1000;
+
+  if (click>=3){
+    Upgrade();
+  }  
+
+
   if (_idleMilliSecondsCounter >= IDLE_TIMEOUT * 1000) {
 
     /* 死的逻辑 */
     //var oPanel = document.getElementById("SecondsUntilExpire");
     alert("GameOver! 去吃粘液饭！");
     window.clearInterval(myInterval);
-    window.clearInterval(UpgradeInterval);
+    //window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
   }
 }
 
 function Upgrade() {
-  var oPanel = document.getElementById("SecondsUntilExpire");
-  if (click <= 0) {
-    alert("一股神秘的力量，把你拽去吃年夜饭！");
-    window.clearInterval(myInterval);
-    window.clearInterval(UpgradeInterval);
-    oPanel.innerHTML = ("祝你鸡年大吉吧！");
-    return;
-  }
+   /* 死的逻辑 */
+  //var oPanel = document.getElementById("SecondsUntilExpire");
+  //if (click <= 0) {
+    //alert("一股神秘的力量，把你拽去吃年夜饭！");
+    //window.clearInterval(myInterval);
+    //window.clearInterval(UpgradeInterval);
+    //oPanel.innerHTML = ("祝你鸡年大吉吧！");
+    //return;
+  //}
 
   click = 0;
   _idleMilliSecondsCounter = 0;
-  IDLE_TIMEOUT = IDLE_TIMEOUT * 0.8; // soft 
+  IDLE_TIMEOUT = IDLE_TIMEOUT * 0.75; // soft 
 
-  window.clearInterval(UpgradeInterval);
-  UpgradeInterval = window.setInterval(Upgrade, 9000);
+  //window.clearInterval(UpgradeInterval);
+  //UpgradeInterval = window.setInterval(Upgrade, IDLE_TIMEOUT*1000 + 10);
 }
 
 function DisableMouse() {
@@ -114,7 +132,7 @@ function DeadMouse() {
     var oPanel = document.getElementById("SecondsUntilExpire");
     alert("叫！你！别！碰！鼠标！GameOver! ");
     window.clearInterval(myInterval);
-    window.clearInterval(UpgradeInterval);
+    //window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
   };
 
@@ -139,7 +157,7 @@ function DeadKey() {
     var oPanel = document.getElementById("SecondsUntilExpire");
     alert("叫！你！别！碰！键盘！GameOver! ");
     window.clearInterval(myInterval);
-    window.clearInterval(UpgradeInterval);
+    //window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
   };
 
