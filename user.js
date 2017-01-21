@@ -34,7 +34,7 @@ function changeName(name) {
         displayName: name,
     }).then(function () {
         // 更新成功
-        console.log("更名成功");
+        console.log("更名成功 ->", wilddog.aut().currentUser);
     }).catch(function (error) {
         // 发生错误
         console.log(error);
