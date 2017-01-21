@@ -82,7 +82,7 @@ function CheckIdleTime() {
     //window.clearInterval(myInterval);
     //window.clearInterval(UpgradeInterval);
     //oPanel.innerHTML = ("祝你鸡年大吉吧！");
-    dead("GameOver! 去吃粘液饭！")
+    dead("GameOver! 去吃年夜饭！")
   }
 }
 
