@@ -6,9 +6,10 @@ var _MilliSecondsInterval = 10; //milliseconds
 var click = 0; //anti-cheating
 
 document.onclick = function () {
-  _idleMilliSecondsCounter = 0;
+  //_idleMilliSecondsCounter = 0;
+  //click++;
+  Rest_idleCounter();
   console.log("Click");
-  click++;
 };
 /* 
 document.onmousemove = function () { //建议禁用！太过于作弊了！
@@ -17,9 +18,10 @@ document.onmousemove = function () { //建议禁用！太过于作弊了！
   click++;
 };*/
 document.onkeypress = function () {
-  _idleMilliSecondsCounter = 0;
+  //_idleMilliSecondsCounter = 0;
+  //click++;
+  Rest_idleCounter();
   console.log("KeyPress");
-  click++;
 };
 
 var myInterval = null;//window.setInterval(CheckIdleTime, _MilliSecondsInterval);
@@ -46,6 +48,12 @@ function dead(info){
     //window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
 }
+
+function Rest_idleCounter(){
+  _idleMilliSecondsCounter = 0;
+  click++;
+}
+
 
 function CheckIdleTime() {
   _idleMilliSecondsCounter += _MilliSecondsInterval;
