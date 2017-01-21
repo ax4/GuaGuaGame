@@ -75,7 +75,9 @@ function loginCb() {
 
 function postLoginCb() {
     var e = document.getElementById("getName-div");
-    e.hidden = true;
+    if (e){
+        e.hidden = true;
+    }   
 }
 
 function changeName(name) {
