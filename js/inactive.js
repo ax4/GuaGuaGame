@@ -34,34 +34,42 @@ function start() {
   _idleMilliSecondsCounter = 0; //milliseconds
   _lifeLongCounter = 0; //milliseconds
   _lifeLongCounterDelta = 0; //milliseconds
-  click = 0; 
+  click = 0;
   myInterval = window.setInterval(CheckIdleTime, _MilliSecondsInterval);
   //UpgradeInterval = window.setInterval(Upgrade, 11000);
+
+  var e = document.getElementById("start-game");
+  e.disabled = true;
+  e.hidden = true;
 }
 
-function dead(info){
+function dead(info) {
   /* 死的逻辑 */
-    var oPanel = document.getElementById("SecondsUntilExpire");
-    if (info){
-      alert(info);
-    }
-    else{
-      alert("你输了！")
-    }
-    
-    window.clearInterval(myInterval);
-    //window.clearInterval(UpgradeInterval);
-    oPanel.innerHTML = ("祝你鸡年大吉吧！");
+  var oPanel = document.getElementById("SecondsUntilExpire");
+  if (info) {
+    alert(info);
+  }
+  else {
+    alert("你输了！")
+  }
+
+  window.clearInterval(myInterval);
+  //window.clearInterval(UpgradeInterval);
+  oPanel.innerHTML = ("祝你鸡年大吉吧！");
+
+  var e = document.getElementById("start-game");
+  e.disabled = false;
+  e.hidden = false;
 }
 
-function Rest_idleCounter(){
-  _lifeLongCounter +=  _lifeLongCounterDelta; 
+function Rest_idleCounter() {
+  _lifeLongCounter += _lifeLongCounterDelta;
   _idleMilliSecondsCounter = 0;
   click++;
-  
+
   var e = document.getElementById("LifeLong");
-  e.innerHTML = "已为 他 续命：";  
-  e.innerHTML += _lifeLongCounter/1000.0;
+  e.innerHTML = "已为 他 续命：";
+  e.innerHTML += _lifeLongCounter / 1000.0;
   e.innerHTML += " 秒！"
 }
 
@@ -71,12 +79,12 @@ function CheckIdleTime() {
   var oPanel = document.getElementById("SecondsUntilExpire");
   if (oPanel)
     oPanel.innerHTML = (IDLE_TIMEOUT * 1000 - _idleMilliSecondsCounter) / 1000;
-    oPanel.innerHTML += "秒内，点击/敲键 续命"
-  if (click>=3){
+  oPanel.innerHTML += "秒内，点击/敲键 续命"
+  if (click >= 3) {
     Upgrade();
-  }  
+  }
 
-  _lifeLongCounterDelta = _idleMilliSecondsCounter; 
+  _lifeLongCounterDelta = _idleMilliSecondsCounter;
   if (_idleMilliSecondsCounter > IDLE_TIMEOUT * 1000) {
 
     /* 死的逻辑 */
@@ -90,14 +98,14 @@ function CheckIdleTime() {
 }
 
 function Upgrade() {
-   /* 死的逻辑 */
+  /* 死的逻辑 */
   //var oPanel = document.getElementById("SecondsUntilExpire");
   //if (click <= 0) {
-    //alert("一股神秘的力量，把你拽去吃年夜饭！");
-    //window.clearInterval(myInterval);
-    //window.clearInterval(UpgradeInterval);
-    //oPanel.innerHTML = ("祝你鸡年大吉吧！");
-    //return;
+  //alert("一股神秘的力量，把你拽去吃年夜饭！");
+  //window.clearInterval(myInterval);
+  //window.clearInterval(UpgradeInterval);
+  //oPanel.innerHTML = ("祝你鸡年大吉吧！");
+  //return;
   //}
 
   click = 0;
@@ -113,7 +121,7 @@ function DisableMouse() {
   warn.innerHTML = "禁用鼠标！"
   var time = IDLE_TIMEOUT * 0.8 * 1000;
 
-  var old = document.onclick; 
+  var old = document.onclick;
   document.onclick = function () {
     warn.innerHTML += "！";
     click++;
@@ -124,9 +132,9 @@ function DisableMouse() {
   function RestoreMouse() {
     warn.innerHTML = "注意警告"
     //document.onclick = function () {
-      //_idleMilliSecondsCounter = 0;
-      //console.log("Click");
-      //click++;
+    //_idleMilliSecondsCounter = 0;
+    //console.log("Click");
+    //click++;
     //};
     document.onclick = old;
   }
@@ -137,7 +145,7 @@ function DisableKey() {
   warn.innerHTML = "禁用键盘！"
   var time = IDLE_TIMEOUT * 0.8 * 1000;
 
-  var old = document.onkeypress; 
+  var old = document.onkeypress;
   document.onkeypress = function () {
     warn.innerHTML += "！";
     click++;
@@ -148,9 +156,9 @@ function DisableKey() {
   function RestoreKey() {
     warn.innerHTML = "注意警告"
     //document.onkeypress = function () {
-      //_idleMilliSecondsCounter = 0;
-      //console.log("KeyPress");
-      //click++;
+    //_idleMilliSecondsCounter = 0;
+    //console.log("KeyPress");
+    //click++;
     //};
     document.onkeypress = old;
   }
@@ -179,9 +187,9 @@ function DeadMouse() {
   function RestoreMouse() {
     warn.innerHTML = "注意警告"
     //document.onclick = function () {
-      //_idleMilliSecondsCounter = 0;
-      //console.log("Click");
-      //click++;
+    //_idleMilliSecondsCounter = 0;
+    //console.log("Click");
+    //click++;
     //};
     document.onclick = old;
   }
@@ -192,7 +200,7 @@ function DeadKey() {
   warn.innerHTML = "碰键盘就死！"
   var time = IDLE_TIMEOUT * 0.8 * 1000;
 
-  var old = document.onkeypress; 
+  var old = document.onkeypress;
   document.onkeypress = function () {
     /* 死的逻辑 */
     //var oPanel = document.getElementById("SecondsUntilExpire");
@@ -208,9 +216,9 @@ function DeadKey() {
   function RestoreKey() {
     warn.innerHTML = "注意警告"
     //document.onkeypress = function () {
-      //_idleMilliSecondsCounter = 0;
-      //console.log("KeyPress");
-      //click++;
+    //_idleMilliSecondsCounter = 0;
+    //console.log("KeyPress");
+    //click++;
     //};
     document.onkeypress = old;
   }
