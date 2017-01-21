@@ -73,8 +73,8 @@ function CheckIdleTime() {
     Upgrade();
   }  
 
-  _lifeLongCounterDelta = _idleMilliSecondsCounter - IDLE_TIMEOUT*1000;
-  if (_lifeLongCounterDelta>0) {
+  _lifeLongCounterDelta = _idleMilliSecondsCounter; 
+  if (_idleMilliSecondsCounter > IDLE_TIMEOUT * 1000) {
 
     /* 死的逻辑 */
     //var oPanel = document.getElementById("SecondsUntilExpire");
