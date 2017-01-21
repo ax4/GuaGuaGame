@@ -21,10 +21,10 @@
   left: 0;
   background: white;
   ">
-        <div style="text-align: center;margin-top: 150px">
+        <!--div style="text-align: center;margin-top: 150px">
             <input id="name" type="" style="width:250px;height:35px;" name="" placeholder='请输入你的膜蛤昵称'>
             <button id="login" onclick="login();" style="height:35px;border: 1px solid;border-radius: 3px;cursor:pointer">进入游戏</button>
-        </div>
+        </div-->
     </div>
 
     <!--todo: add Wilddog login. Once Dead, push score. (to prevent Cheating) -->
@@ -36,7 +36,7 @@
             initWilddog();
         }
         pre_login(postLoginCb,function(){
-            document.getElementById("getName-div").hidden = false;
+            document.getElementById("getName-div").innerHTML ='<div style="text-align: center;margin-top: 150px">     <input id="name" type="" style="width:250px;height:35px;" name="" placeholder="请输入你的膜蛤昵称"><button id="login" onclick="login();" style="height:35px;border: 1px solid;border-radius: 3px;cursor:pointer">进入游戏</button></div>'
         });
-    </script>
+    </script> 
 </body>
