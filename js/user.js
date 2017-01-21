@@ -77,7 +77,12 @@ function postLoginCb() {
     var e = document.getElementById("getName-div");
     if (e){
         e.hidden = true;
-    }   
+    }
+
+    var e2 = document.getElementById("UserName");
+    e2.innerHTML = wilddog.auth().currentUser.displayName;
+    e2.innerHTML += "， 吼啊！"
+
 }
 
 function changeName(name) {
