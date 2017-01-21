@@ -1,6 +1,8 @@
 var IDLE_TIMEOUT = 10; //seconds
 var _idleMilliSecondsCounter = 0; //milliseconds
 var _lifeLongCounter = 0; //milliseconds
+var _lifeLongCounterDelta = 0; //milliseconds
+
 var _MilliSecondsInterval = 10; //milliseconds
 //var UpgradeSecondsInterval = 5; //seconds
 var click = 0; //anti-cheating
@@ -50,8 +52,14 @@ function dead(info){
 }
 
 function Rest_idleCounter(){
+  _lifeLongCounter +=  _lifeLongCounterDelta; 
   _idleMilliSecondsCounter = 0;
   click++;
+  
+  var e = document.getElementById("LifeLong");
+  e.innerHTML = "已为 他 续命：";  
+  e.innerHTML += _lifeLongCounter/1000.0;
+  e.innerHTML += " 秒！"
 }
 
 
@@ -65,8 +73,8 @@ function CheckIdleTime() {
     Upgrade();
   }  
 
-
-  if (_idleMilliSecondsCounter >= IDLE_TIMEOUT * 1000) {
+  _lifeLongCounterDelta = _idleMilliSecondsCounter - IDLE_TIMEOUT*1000;
+  if (_lifeLongCounterDelta>0) {
 
     /* 死的逻辑 */
     //var oPanel = document.getElementById("SecondsUntilExpire");
