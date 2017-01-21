@@ -61,10 +61,11 @@ function CheckIdleTime() {
 
     /* 死的逻辑 */
     //var oPanel = document.getElementById("SecondsUntilExpire");
-    alert("GameOver! 去吃粘液饭！");
-    window.clearInterval(myInterval);
+    //alert("GameOver! 去吃粘液饭！");
+    //window.clearInterval(myInterval);
     //window.clearInterval(UpgradeInterval);
-    oPanel.innerHTML = ("祝你鸡年大吉吧！");
+    //oPanel.innerHTML = ("祝你鸡年大吉吧！");
+    dead("GameOver! 去吃粘液饭！")
   }
 }
 
@@ -135,11 +136,13 @@ function DeadMouse() {
   var time = IDLE_TIMEOUT * 0.8 * 1000;
   document.onclick = function () {
     /* 死的逻辑 */
-    var oPanel = document.getElementById("SecondsUntilExpire");
-    alert("叫！你！别！碰！鼠标！GameOver! ");
-    window.clearInterval(myInterval);
+    //var oPanel = document.getElementById("SecondsUntilExpire");
+    //alert("叫！你！别！碰！鼠标！GameOver! ");
+    //window.clearInterval(myInterval);
     //window.clearInterval(UpgradeInterval);
-    oPanel.innerHTML = ("祝你鸡年大吉吧！");
+    //oPanel.innerHTML = ("祝你鸡年大吉吧！");
+
+    dead("叫！你！别！碰！鼠标！GameOver! ");
   };
 
   window.setTimeout(RestoreMouse, time)
@@ -160,11 +163,12 @@ function DeadKey() {
   var time = IDLE_TIMEOUT * 0.8 * 1000;
   document.onkeypress = function () {
     /* 死的逻辑 */
-    var oPanel = document.getElementById("SecondsUntilExpire");
-    alert("叫！你！别！碰！键盘！GameOver! ");
-    window.clearInterval(myInterval);
+    //var oPanel = document.getElementById("SecondsUntilExpire");
+    //alert("叫！你！别！碰！键盘！GameOver! ");
+    //window.clearInterval(myInterval);
     //window.clearInterval(UpgradeInterval);
-    oPanel.innerHTML = ("祝你鸡年大吉吧！");
+    //oPanel.innerHTML = ("祝你鸡年大吉吧！");
+    dead("叫！你！别！碰！键盘！GameOver! ");
   };
 
   window.setTimeout(RestoreKey, time)
