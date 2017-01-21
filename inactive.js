@@ -34,7 +34,13 @@ function start() {
 function dead(info){
   /* 死的逻辑 */
     var oPanel = document.getElementById("SecondsUntilExpire");
-    alert(info);
+    if (info){
+      alert(info);
+    }
+    else{
+      alert("你输了！")
+    }
+    
     window.clearInterval(myInterval);
     //window.clearInterval(UpgradeInterval);
     oPanel.innerHTML = ("祝你鸡年大吉吧！");
