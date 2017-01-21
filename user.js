@@ -8,25 +8,74 @@ function initWilddog() {
 }
 
 function login() {
-    initWilddog();
-    wilddog.auth().signInAnonymously().then(function (user) {
-        console.info("Signed In with ->", user);
-        loginCb();
-    }).catch(function (error) {
-        // 错误处理
-        console.info(error);
-        // ...
+    var doLogin = function () {
+        wilddog.auth().signInAnonymously().then(function (user) {
+            console.info("Signed In with ->", user);
+            loginCb();
+        }).catch(function (error) {
+            // 错误处理
+            console.info(error);
+            // ...
+        });
+    }
+
+    var already = function () {
+        console.log("already login")
+    }
+
+    quick_pre_login(already, doLogin);
+}
+
+function quick_pre_login(successCb, failCb) {
+    if (wilddog.auth().currentUser != null) {
+        if (successCb) {
+            successCb();
+        }
+    }
+    else {
+        if (failCb) {
+            failCb();
+        }
+    }
+}
+
+
+function pre_login(successCb, failCb) {
+    var stoplisten = wilddog.auth().onAuthStateChanged(function (user) {
+        console.info("auth state changed ->", user);
+        if (wilddog.auth().currentUser != null) {
+            if (successCb) {
+                successCb();
+                if (stoplisten) {
+                    stoplisten();
+                }
+
+            }
+        }
+        else {
+            if (failCb) {
+                failCb();
+                if (stoplisten) {
+                    stoplisten();
+                }
+            }
+        }
     });
 }
 
 function loginCb() {
-    //todo: get name from webpage 
-    // var userName = get
-    changeName("hello_new name");
+    var userName = document.getElementById("name").value;
+    if (userName == "") {
+        userName = "无名蛤丝"
+    }
 
-    //todo: hide getName-div
+    changeName(userName);
+    postLoginCb();
+}
 
-    //start();
+function postLoginCb() {
+    var e = document.getElementById("getName-div");
+    e.hidden = true;
 }
 
 function changeName(name) {
