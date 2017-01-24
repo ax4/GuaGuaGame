@@ -82,7 +82,6 @@ function postLoginCb() {
     var e2 = document.getElementById("UserName");
     e2.innerHTML = wilddog.auth().currentUser.displayName;
     e2.innerHTML += "， 吼啊！"
-
 }
 
 function changeName(name) {
@@ -91,6 +90,9 @@ function changeName(name) {
     }).then(function () {
         // 更新成功
         console.log("更名成功 ->", wilddog.auth().currentUser);
+        var e2 = document.getElementById("UserName");
+        e2.innerHTML = wilddog.auth().currentUser.displayName;
+        e2.innerHTML += "， 吼啊！"
     }).catch(function (error) {
         // 发生错误
         console.log(error);
