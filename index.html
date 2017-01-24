@@ -3,6 +3,7 @@
 
 <head>
     <title>续命游戏 v1.2</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 
 <body>
@@ -32,12 +33,19 @@
     <script src="./js/inactive.js"></script>
     <script src="https://cdn.wilddog.com/sdk/js/2.4.3/wilddog.js"></script>
     <script src="./js/user.js"></script>
+    <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
     <script>
         if (wilddog.app == null) {
             initWilddog();
         }
         pre_login(postLoginCb,function(){
             document.getElementById("getName-div").innerHTML ='<div style="text-align: center;margin-top: 150px">     <input id="name" type="" style="width:250px;height:35px;" name="" placeholder="请输入你的膜蛤昵称"><button id="login" onclick="login();" style="height:35px;border: 1px solid;border-radius: 3px;cursor:pointer">进入游戏</button></div>'
+        });
+
+        var hammertime = new Hammer(document);
+        hammertime.on('touch', function(ev) {
+            console.log(ev);
+            alert(ev);
         });
     </script> 
 </body>
