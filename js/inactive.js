@@ -41,6 +41,10 @@ function start() {
   var e = document.getElementById("start-game");
   e.disabled = true;
   e.hidden = true;
+
+  var e1 = document.getElementById("click-me");
+  e1.disabled = false;
+  e1.hidden = false;
 }
 
 function dead(info) {
@@ -60,6 +64,10 @@ function dead(info) {
   var e = document.getElementById("start-game");
   e.disabled = false;
   e.hidden = false;
+
+  var e1 = document.getElementById("click-me");
+  e1.disabled = true;
+  e1.hidden = true;
 }
 
 function Rest_idleCounter() {
