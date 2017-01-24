@@ -14,6 +14,7 @@
         <h1 id="BanWarn" style="color:coral;font-size: bold;">注意警告</h1>
         <h1 id="DeadWarn" style="color:fuchsia;font-size: bold;">注意警告</h1>
         <h3><input type="button" id="start-game" onclick="start()" value="开始游戏" /></h3>
+        <h3><input type="button" id="click-me" value="点我" /></h3>
     </div>
 
     <div id="getName-div" style="width: 100%;
@@ -33,7 +34,7 @@
     <script src="./js/inactive.js"></script>
     <script src="https://cdn.wilddog.com/sdk/js/2.4.3/wilddog.js"></script>
     <script src="./js/user.js"></script>
-    <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
+    <!--script src="http://hammerjs.github.io/dist/hammer.min.js"></script-->
     <script>
         if (wilddog.app == null) {
             initWilddog();
@@ -42,10 +43,14 @@
             document.getElementById("getName-div").innerHTML ='<div style="text-align: center;margin-top: 150px">     <input id="name" type="" style="width:250px;height:35px;" name="" placeholder="请输入你的膜蛤昵称"><button id="login" onclick="login();" style="height:35px;border: 1px solid;border-radius: 3px;cursor:pointer">进入游戏</button></div>'
         });
 
-        var hammertime = new Hammer(document);
-        hammertime.on('tap', function(ev) {
-            console.log(ev);
-            alert(ev);
-        });
+        //var hammertime = new Hammer(document);
+        //hammertime.on('tap', function(ev) {
+            //console.log(ev);
+            //alert(ev);
+        //});
+
+        var e1 = document.getElementById("click-me");
+        e1.disabled = true;
+        e1.hidden = true;
     </script> 
 </body>
