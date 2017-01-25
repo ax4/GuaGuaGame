@@ -55,7 +55,7 @@
 
         deadCallback = function(){
             console.info("Push score to server.");
-            var ref = wilddog.sync().ref("ranking");
+            var ref = wilddog.sync().ref("rank");
             ref.push({
                 name: wilddog.auth().currentUser.displayName,
                 score: _lifeLongCounter
