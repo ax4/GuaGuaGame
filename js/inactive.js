@@ -68,6 +68,10 @@ function dead(info) {
   var e1 = document.getElementById("click-me");
   e1.disabled = true;
   e1.hidden = true;
+
+  if (deadCallback){
+    deadCallback();
+  }
 }
 
 function Rest_idleCounter() {
