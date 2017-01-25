@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>续命游戏 排行榜</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+
+<body>
+    <h1>你问我则个排名吼不吼啊，我当然说吼啊！</h1>
+    <ol id="rank">
+
+    </ol>
+
+    <script src="https://cdn.wilddog.com/sdk/js/2.4.3/wilddog.js"></script>
+    <script>
+        function initWilddog() {
+            var appID = "guaguagame"
+            var config = {
+                authDomain: appID + '.wilddog.com',
+                syncURL: "https://" + appID + ".wilddogio.com"
+            };
+            wilddog.initializeApp(config);
+        }
+
+        var score_list = [];
+
+        function listen() {
+            var ref = wilddog.sync().ref("rank");
+            ref.on("child_added", function (snapshot) {
+                //var temp = snapshot.val();
+                //console.log(temp.name + " , " +  temp.score);
+                console.log(snapshot.val());
+                score_list.push(snapshot.val());
+                score_list.sort(function(a,b){return b.score - a.score});
+
+                var e = document.getElementById("rank");
+                console.info("display score_list"); 
+                e.innerHTML = "";
+                score_list.forEach(function(data){
+                    console.log(data.score);
+                    e.innerHTML += "<li>" + data.name + "  :  " + data.score/1000 + " s</li>";  
+                })
+            });
+        }
+        
+        initWilddog();
+        listen();
+    </script>
+
+</body>
+
+
+</html>
