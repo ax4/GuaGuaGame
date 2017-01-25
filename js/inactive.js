@@ -42,6 +42,10 @@ function start() {
   e.disabled = true;
   e.hidden = true;
 
+  var e2 = document.getElementById("rank");
+  e2.disabled = true;
+  e2.hidden = true;
+
   var e1 = document.getElementById("click-me");
   e1.disabled = false;
   e1.hidden = false;
@@ -59,15 +63,23 @@ function dead(info) {
 
   window.clearInterval(myInterval);
   //window.clearInterval(UpgradeInterval);
-  oPanel.innerHTML = ("祝你鸡年大吉吧！");
+  oPanel.innerHTML = ("送你们一个鸡啊，今年是鸡年啊！🐸");
 
   var e = document.getElementById("start-game");
   e.disabled = false;
   e.hidden = false;
 
+  var e2 = document.getElementById("rank");
+  e2.disabled = false;
+  e2.hidden = false;
+
   var e1 = document.getElementById("click-me");
   e1.disabled = true;
   e1.hidden = true;
+
+  if (deadCallback){
+    deadCallback();
+  }
 }
 
 function Rest_idleCounter() {
@@ -101,7 +113,7 @@ function CheckIdleTime() {
     //window.clearInterval(myInterval);
     //window.clearInterval(UpgradeInterval);
     //oPanel.innerHTML = ("祝你鸡年大吉吧！");
-    dead("GameOver! 去吃年夜饭！")
+    dead("续命失败....!");
   }
 }
 
@@ -187,7 +199,7 @@ function DeadMouse() {
     //window.clearInterval(UpgradeInterval);
     //oPanel.innerHTML = ("祝你鸡年大吉吧！");
 
-    dead("叫！你！别！碰！鼠标！GameOver! ");
+    dead("叫！你！别！碰！鼠标！续命失败.....! ");
   };
 
   window.setTimeout(RestoreMouse, time)
@@ -216,7 +228,7 @@ function DeadKey() {
     //window.clearInterval(myInterval);
     //window.clearInterval(UpgradeInterval);
     //oPanel.innerHTML = ("祝你鸡年大吉吧！");
-    dead("叫！你！别！碰！键盘！GameOver! ");
+    dead("叫！你！别！碰！键盘！续命失败.....! ");
   };
 
   window.setTimeout(RestoreKey, time)

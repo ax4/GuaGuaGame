@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>续命游戏 排行榜</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+
+<body>
+    <h1 style="color: seagreen;">你们给我搞的则个排名啊，</h1>
+    <h2 style="color: seagreen;font-size: bold;">我看了以后...</h2>
+    <h1 style="color: seagreen;">Excited! 🐸</h1>
+    <ol id="rank">
+
+    </ol>
+    <h3><a href="index.html">返回游戏</a></h3>
+    <script src="https://cdn.wilddog.com/sdk/js/2.4.3/wilddog.js"></script>
+    <script>
+        function initWilddog() {
+            var appID = "guaguagame"
+            var config = {
+                authDomain: appID + '.wilddog.com',
+                syncURL: "https://" + appID + ".wilddogio.com"
+            };
+            wilddog.initializeApp(config);
+        }
+
+        var score_list = [];
+
+        function listen() {
+            var ref = wilddog.sync().ref("rank");
+            ref.on("child_added", function (snapshot) {
+                //var temp = snapshot.val();
+                //console.log(temp.name + " , " +  temp.score);
+                console.log(snapshot.val());
+                score_list.push(snapshot.val());
+                score_list.sort(function(a,b){return b.score - a.score});
+
+                var e = document.getElementById("rank");
+                console.info("display score_list"); 
+                e.innerHTML = "";
+                score_list.forEach(function(data){
+                    console.log(data.score);
+                    e.innerHTML += "<li>" + data.name + "  :  " + data.score/1000 + " s</li>";  
+                })
+            });
+        }
+        
+        initWilddog();
+        listen();
+    </script>
+
+</body>
+
+
+</html>
