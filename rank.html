@@ -29,7 +29,7 @@
 
         function listen() {
             var ref = wilddog.sync().ref("rank");
-            ref.on("child_added", function (snapshot) {
+            ref.orderByChild("score").limitToLast(20).on("child_added", function (snapshot) {
                 //var temp = snapshot.val();
                 //console.log(temp.name + " , " +  temp.score);
                 console.log(snapshot.val());
