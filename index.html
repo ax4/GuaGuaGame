@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>续命游戏 v1.3.1</title>
+    <title>续命游戏 v1.3.2</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 
@@ -55,14 +55,26 @@
         e1.hidden = true;
 
         deadCallback = function(){
+            
+
             console.info("Push score to server.");
             var ref = wilddog.sync().ref("rank");
             ref.push({
                 name: wilddog.auth().currentUser.displayName,
                 score: _lifeLongCounter
             });
+            var user_history = wilddog.sync().ref("user/" + wilddog.auth().currentUser.uid + "/history");
+            user_history.push({
+                name: wilddog.auth().currentUser.displayName,
+                score: _lifeLongCounter
+            });
         }
 
+        //wilddog.auth().onAuthStateChanged(function (user){
+            //if (wilddog.auth().currentUse==null){
+                //location.reload();
+            //}
+        //});
     </script> 
 </body>
 </html>
