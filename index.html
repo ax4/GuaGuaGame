@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div>
+    <div id="game">
         <h1 id="UserName"></h1>
         <h1 id="SecondsUntilExpire"></h1>
         <h1 id="LifeLong"> 真正的粉丝，为他续命 </h1>
@@ -49,6 +49,7 @@
     <script>
         var e_upload = document.getElementById("upload");
         e_upload.hidden = true;
+        var e_game = document.getElementById("game");
 
         if (wilddog.app == null) {
             initWilddog();
@@ -69,7 +70,7 @@
 
         deadCallback = function(){
             e_upload.hidden = false;
-
+            e_game.hidden = true; 
             console.info("Push score to server.");
             var ref = wilddog.sync().ref("rank");
             var user_history = wilddog.sync().ref("user/" + wilddog.auth().currentUser.uid + "/history");
@@ -82,6 +83,7 @@
                         score: _lifeLongCounter
                     }).then(function(){
                         e_upload.hidden = true;
+                        e_game.hidden = false; 
                     });
 
                 });
